@@ -11,8 +11,22 @@
     <script src="asssets/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <?php for($i=1;$i<=10;$i++):?>
-    <h1><?php echo "hello world";?></h1>
-<?php endfor;?> 
+<div class="container">
+    <?php
+        $host='host = ec2-54-204-39-46.compute-1.amazonaws.com';
+        $port='port = 5432';
+        $dbname='dbname = d71q4kjq41m05c';
+        $credentials='user = iqkoqhofwpruzk password = 6ca122086060feab86342066b0bfcedafbee49417bf19aa10b04c2626b441dac';
+        $db= pg_connect("$host $port $dbname $credentials");
+       
+        $sql= "select * from courses";
+        $query=pg_query($db,$sql);
+
+        while(($row=pg_fetch_assoc($query))){
+            echo  "<li>" .$row['course_name']."</li>";
+        }
+        pg_close($db);
+    ?>
+</div>
 </body>
 </html>
