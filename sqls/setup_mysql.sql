@@ -11,11 +11,11 @@ insert into courses(course_name,course_code,course_fees,duration,duration_type,s
 values('Combo Java','CMJ',25000,10,'W',true);
 
 create table enquiries(id serial primary key,first_name varchar(50),last_name varchar(50),
-email varchar(100),contact_no varchar(20),course_id bigint unsigned,
+email varchar(100),contact_no varchar(20),course_id bigint,
 enquiry_date timestamp default current_timestamp,modified_date timestamp null,
 status boolean);
 
-alter table enquiries add foreign key(course_id) references courses(id);
+--alter table enquiries add foreign key(course_id) references courses(id);
 
 alter table enquiries add timing int;
 alter table enquiries add message text;
